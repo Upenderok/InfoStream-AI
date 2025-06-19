@@ -8,4 +8,6 @@ streamlit
 pdfplumber
 nltk
 python-dotenv
-
+black==24.4.2  # Or a recent stable version
+flake8==7.1.0  # Or a recent stable version
+pytest==8.2.2
