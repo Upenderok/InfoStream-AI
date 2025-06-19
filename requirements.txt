@@ -10,4 +10,4 @@ nltk
 python-dotenv
 black==24.4.2  # Or a recent stable version
 flake8==7.1.0  # Or a recent stable version
-pytest==8.2.2
+pytest==8.4.1
