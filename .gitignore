@@ -1,2 +1,43 @@
-# Python virtual environment
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
 .venv/
+venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Data folders (keep your PDF, but ignore generated chunks & indexes)
+data/
+chunks/
+vectordb/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.*
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Misc
+.DS_Store
+

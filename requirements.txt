@@ -1,0 +1,11 @@
+sentence-transformers
+faiss-cpu
+transformers
+bitsandbytes
+fastapi
+uvicorn
+streamlit
+pdfplumber
+nltk
+python-dotenv
+
