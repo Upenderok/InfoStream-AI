@@ -15,17 +15,17 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 
 # ─── config ────────────────────────────────────────────────────────────────
-VECTORDB_DIR  = Path("vectordb")
-INDEX_PATH    = VECTORDB_DIR / "index.faiss"
-META_PATH     = VECTORDB_DIR / "meta.json"
-EMB_MODEL     = "BAAI/bge-small-en-v1.5"
+VECTORDB_DIR = Path("vectordb")
+INDEX_PATH = VECTORDB_DIR / "index.faiss"
+META_PATH = VECTORDB_DIR / "meta.json"
+EMB_MODEL = "BAAI/bge-small-en-v1.5"
 
-SIM_THRESHOLD = 0.45         # was 0.60 – empirically safer
-MAX_K_HITS    = 6            # default k for each search
-RATIO_MIN     = 0.40         # ≥ 40 % keyword overlap
+SIM_THRESHOLD = 0.45  # was 0.60 – empirically safer
+MAX_K_HITS = 6  # default k for each search
+RATIO_MIN = 0.40  # ≥ 40 % keyword overlap
 
-_STOP    = {"the", "a", "an", "of", "and", "to", "for", "is", "are", "in", "on"}
-_IGNORE  = {"what", "which", "who", "whom", "whose", "when", "where", "why", "how"}
+_STOP = {"the", "a", "an", "of", "and", "to", "for", "is", "are", "in", "on"}
+_IGNORE = {"what", "which", "who", "whom", "whose", "when", "where", "why", "how"}
 
 
 class Doc(TypedDict):
@@ -49,10 +49,7 @@ class Retriever:
         return {
             t.lower().strip(string.punctuation)
             for t in re.split(r"\W+", txt)
-            if t
-            and len(t) > 2
-            and t.lower() not in _STOP
-            and t.lower() not in _IGNORE
+            if t and len(t) > 2 and t.lower() not in _STOP and t.lower() not in _IGNORE
         }
 
     def search(self, query: str, k: int = MAX_K_HITS) -> List[Doc]:
@@ -61,17 +58,12 @@ class Retriever:
         cosine-sim ≥ SIM_THRESHOLD and keyword overlap ≥ RATIO_MIN.
         """
         # encode & query FAISS
-        q_vec = (
-            self._enc.encode([query], normalize_embeddings=True)
-            .astype("float32")
-        )
+        q_vec = self._enc.encode([query], normalize_embeddings=True).astype("float32")
         scores, ids = self._index.search(q_vec, k)
 
         # cosine similarity filter
         cand = [
-            (i, s)
-            for i, s in zip(ids[0], scores[0])
-            if i != -1 and s >= SIM_THRESHOLD
+            (i, s) for i, s in zip(ids[0], scores[0]) if i != -1 and s >= SIM_THRESHOLD
         ]
 
         # keyword-ratio sanity check

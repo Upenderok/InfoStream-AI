@@ -63,7 +63,7 @@ def _load_llm() -> Llama:
             n_batch=64,
             n_threads=os.cpu_count(),
             mmap=True,
-            n_gpu_layers=0,          # CPU-only
+            n_gpu_layers=0,  # CPU-only
             temperature=0.0,
             top_p=1.0,
             top_k=0,
