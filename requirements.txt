@@ -10,8 +10,6 @@ nltk
 python-dotenv
 black==24.4.2  # Or a recent stable version
 flake8==7.1.0  # Or a recent stable version
-<<<<<<< HEAD
-pytest==8.4.1
 accelerate
 # Add to requirements.txt
 ctransformers>=0.2.27
