@@ -10,6 +10,7 @@ nltk
 python-dotenv
 black==24.4.2  # Or a recent stable version
 flake8==7.1.0  # Or a recent stable version
+<<<<<<< HEAD
 pytest==8.4.1
 accelerate
 # Add to requirements.txt
@@ -19,3 +20,6 @@ sentence-transformers>=2.2.2
 faiss-cpu>=1.7.4  # or faiss-gpu if using NVIDIA
 streamlit==1.28.0
 pdfplumber==0.10.0
+=======
+pytest==8.4.1
+>>>>>>> 9d44ad6b67f7571f13756d167f277fb10004cebb
